@@ -19,7 +19,7 @@ export default function()
         ChatHelpers.addOpposedHighlightListeners(html);
     });
 
-    Hooks.on("renderChatMessage", (app, html) => 
+    Hooks.on("renderChatMessageHTML", (app, html) => 
     {
         PostedItemMessageModel.itemPostListeners(html);
         ChatHelpers.removeGMOnlyElements(html);

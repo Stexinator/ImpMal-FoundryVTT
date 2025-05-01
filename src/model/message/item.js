@@ -89,11 +89,11 @@ export class PostedItemMessageModel extends foundry.abstract.DataModel
     
     static itemPostListeners(html)
     {
-        let id = html[0].dataset.messageId;
+        let id = html.dataset.messageId;
         let message = game.messages.get(id);
         if (message.type == "item")
         {
-            let post = html.find(".item-post")[0]
+            let post = html.querySelector(".item-post")
             post.draggable = true; 
             post.addEventListener("dragstart", ev => 
             {
