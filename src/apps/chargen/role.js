@@ -111,7 +111,7 @@ export class RoleStage extends ChargenStage {
 
     validateAdvances()
     {
-        let allocated = Array.from(this.element.find(".skills input")).reduce((allocated, input) => allocated + (Number(input.value) || 0), 0)
+        let allocated = Array.from(this.element.querySelector(".skills input")).reduce((allocated, input) => allocated + (Number(input.value) || 0), 0)
         let total = this.context.role.system.skills.value;
         if (total > allocated)
         {

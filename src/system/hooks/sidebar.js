@@ -11,7 +11,7 @@ export default function() {
         CharGenIM.start();
       })
   
-      button.insertAfter(html.find(".header-actions"))
+      button.insertAfter(html.querySelector(".header-actions"))
       
     }
   })

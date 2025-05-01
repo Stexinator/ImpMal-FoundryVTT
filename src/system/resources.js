@@ -55,7 +55,7 @@ export default class ResourceManager
     {
         // Make sure all combat trackers (popped out and embedded) have the correct value
         [ui.combat].concat(Object.values(ui.windows).filter(w => w instanceof CombatTracker)).forEach(tracker => {
-            tracker.element.find(".resource input").each((index, input) => {
+            tracker.element.querySelector(".resource input").each((index, input) => {
                 input.value = this.get(input.dataset.key);
             });
         })
@@ -64,7 +64,7 @@ export default class ResourceManager
     // Add resource input to combat tracker
     addResourceFields(app, html)
     {
-        let header = html.find(".combat-tracker-header");
+        let header = html.querySelector(".combat-tracker-header");
         let fieldsHTML = Object.values(this.resources).map(i => {
             if (!game.user.isGM && i.hidden)
             {

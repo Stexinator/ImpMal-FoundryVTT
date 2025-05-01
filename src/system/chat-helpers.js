@@ -23,13 +23,13 @@ export default class ChatHelpers
 
     static highlightMessage(messageId)
     {
-        let message = ui.chat.element.find(`[data-message-id='${messageId}']`)[0];
+        let message = ui.chat.element.querySelector(`[data-message-id='${messageId}']`);
         message?.classList.add("highlight");
     }
 
     static unhighlightMessage(messageId)
     {
-        let message = ui.chat.element.find(`[data-message-id='${messageId}']`)[0];
+        let message = ui.chat.element.querySelector(`[data-message-id='${messageId}']`);
         message?.classList.remove("highlight");
     }
 
@@ -37,7 +37,7 @@ export default class ChatHelpers
     {
         if (!game.user.isGM)
         {
-            html.find(".gm-only").remove();
+            html.querySelector(".gm-only").remove();
         }
     }
 

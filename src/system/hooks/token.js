@@ -12,7 +12,7 @@ export default function()
 
 function _addImpmalStatusEffects(html, actor)
 {
-    let effects = html.find(".status-effects");
+    let effects = html.querySelector(".status-effects");
     let sheetConditions = actor.sheet.formatConditions({actor : actor});
 
     let newEffects = "<div class='status-effects impmal'>";
@@ -42,9 +42,9 @@ function _addImpmalStatusEffects(html, actor)
     newEffects += "</div>";
 
     effects.replaceWith(newEffects);
-    effects = html.find(".status-effects");
+    effects = html.querySelector(".status-effects");
 
-    effects.find(".effect-control").on("mousedown", ev => 
+    effects.querySelector(".effect-control").on("mousedown", ev => 
     {
         ev.preventDefault();
         ev.stopPropagation();
