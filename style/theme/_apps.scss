@@ -28,6 +28,10 @@ body.impmal-theme {
         }
 
 
+        .form-group {
+            gap: 0px;
+        }
+
 
         input[type="range"] {
             border: none;
@@ -189,6 +193,8 @@ body.impmal-theme .application:not(.journal-sheet) {
         }
     }
 
+    .form-group select,
+    .form-group input:not([type="checkbox"],[type="range"],[type="radio"]),
     select,
     input:not([type="checkbox"],[type="range"],[type="radio"]) {
         background: none;
@@ -306,12 +312,39 @@ body.impmal-theme .application:not(.journal-sheet) {
         @include scan;
     }
 }
-
-&.active-effect-config  {
+&.active-effect-config {
     .script {
         background-color: var(--impmal-lightblue);
     }
 }
 
+
+&.roll-dialog-v2 {
+    .state-label {
+        background: var(--impmal-lightblue);
+        padding: 0px;
+        height: 1.5rem;
+        span {
+            background: var(--impmal-darkblue);
+            width: 1rem;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+        }
+    }
+
+    .dialog-modifiers {
+
+        label {
+            background: var(--impmal-lightblue);
+            padding: 0.5rem;
+        }
+
+        .modifier.active {
+            --modifier-bg: var(--impmal-lightgreen);
+            color: black;
+        }
+    }
+}
 
 }

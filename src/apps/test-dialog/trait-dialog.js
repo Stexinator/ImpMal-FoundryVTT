@@ -15,6 +15,33 @@ export class TraitTestDialog extends AttackDialog
         return this.data.item;
     }
 
+    
+    static PARTS = {
+        fields : {
+            template : "systems/impmal/templates/apps/test-dialog/test-dialog.hbs",
+            fields: true
+        },
+        attack : {
+            template : "systems/impmal/templates/apps/test-dialog/attack-fields.hbs",
+            fields: true
+        },
+        state : {
+            template : "systems/impmal/templates/apps/test-dialog/dialog-state.hbs",
+            fields: true
+        },
+        mode : {
+            template : "modules/warhammer-lib/templates/apps/dialog/dialog-mode.hbs",
+            fields: true
+        },
+        modifiers : {
+            template : "modules/warhammer-lib/templates/partials/dialog-modifiers.hbs",
+            modifiers: true
+        },
+        footer : {
+            template : "templates/generic/form-footer.hbs"
+        }
+    }
+
     /**
      * 
      * @param {string} characteristic Characteristic key, such as "ws" or "str"
@@ -29,12 +56,11 @@ export class TraitTestDialog extends AttackDialog
         log(`${this.prototype.constructor.name} - Setup Dialog Data`, {args : Array.from(arguments).slice(2)});
 
         let trait = id.includes(".") ? fromUuidSync(id) : actor.items.get(id); // Account for UUID
+        
         let skillKey = trait.system.attack.skill.key || trait.system.attack.type;
 
-        let dialogData = super.setupData({name : trait.system.attack.skill.specialisation, key : skillKey}, actor, {title, fields, context});
+        let dialogData = super.setupData({name : trait.system.attack.skill.specialisation, key : skillKey}, actor, context);
 
-        // TODO find a way to avoid duplicating this code from the parent class
-        dialogData.data.title = (context.title?.replace || game.i18n.format("IMPMAL.TraitTest", {trait : trait?.name})) + (context.title?.append || "");
 
         dialogData.data.itemId = trait?.id;
         dialogData.data.item = trait;
