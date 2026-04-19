@@ -2117,5 +2117,20 @@ function optionArrayToObject(options)
     }, {})
 }
 
+Object.defineProperty(IMPMAL, 'difficultyChoices', {
+    get() {
+        let difficulties = foundry.utils.deepClone(game.impmal.config.difficulties);
+
+        for(let d in difficulties)
+        {
+            let name = difficulties[d].name;
+            let modifier = difficulties[d].modifier;
+            difficulties[d] = `${name} (${modifier >= 0 ? "+" : ""}${modifier})`;
+        }
+    
+        return difficulties;
+    }
+});
+
 foundry.utils.mergeObject(IMPMAL, defaultWarhammerConfig, {overwrite: false})
 export {IMPMAL, IM_CONFIG};

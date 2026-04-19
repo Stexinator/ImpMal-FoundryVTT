@@ -59,8 +59,7 @@ export default class NPCSheet extends IMActorSheet
       {
         let context = await super._prepareContext(options)
         context.attackItems = context.items.weapon.concat(context.items.trait.filter(t => t.system.attack.enabled));
-        let physicalTypes = Object.keys(game.template.Item).filter(i => game.template.Item[i].templates?.includes("physical"));
-        context.possessions = context.actor.items.filter(i => physicalTypes.includes(i.type));
+        context.possessions = context.actor.items.filter(i => i.system.isPhysical);
         context.traits = context.items.trait.filter(t => !t.system.attack.enabled || t.system.roll.enabled || t.system.test.enabled).concat(context.items.corruption, context.items.talent)
         return context
       }

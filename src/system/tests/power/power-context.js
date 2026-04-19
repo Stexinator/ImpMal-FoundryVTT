@@ -12,7 +12,7 @@ export class PowerTestContext extends SkillTestContext
     static fromData(data) 
     {
         log(`${this.prototype.constructor.name} - Retrieving Context Data`, {args : data});
-        let context = mergeObject(super.fromData(data), {powerId : data.powerId, push : data.push});
+        let context = foundry.utils.mergeObject(super.fromData(data), {powerId : data.powerId, push : data.push});
         log(`${this.prototype.constructor.name} - Context Data Retrieved`, {args : context});
         return context;
     }

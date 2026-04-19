@@ -31,7 +31,10 @@ export class OriginStage extends ChargenStage {
     async getData() {
         let data = await super.getData()
         if (this.context.origin)
+        {
             data.originDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.context.origin.system.notes.player, {async : true})
+            data.characteristics = this.context.origin.system.characteristics.choices.reduce((obj, ch) => {obj[ch] = game.impmal.config.characteristics[ch]; return obj}, {})
+        }
         return data
     }
 

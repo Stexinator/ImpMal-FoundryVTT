@@ -27,13 +27,8 @@
             <option>{{configLookup "characteristics" context.faction.system.character.characteristics.base}}</option>
           </select>
           <select name="characteristic" class="choice add-context" data-property="characteristic">
-            {{#select context.characteristic}}
-            <option value="">-</option>
-            {{#each context.faction.system.character.characteristics.choices}}
-              <option value="{{this}}">{{configLookup "characteristics" this}}</option>
-            {{/each}}
+            {{selectOptions characteristics selected=context.characteristic blank=""}}
           </select>
-            {{/select}}
         </div>
           <p class="centered">Allocate {{context.faction.system.character.advances.value}} Advances to the following Skills</p>
         <div class="choices skills wrap">

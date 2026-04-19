@@ -432,7 +432,7 @@ export default class CharGenIM extends FormApplication {
       }
       else {
 
-        this.actor._id = randomID();
+        this.actor._id = foundry.utils.randomID();
         game.user.flags.waitingForCreatedActor = this.actor._id;
         const payload =  {fromId : game.user.id, actor : this.actor, items}
         SocketHandlers.call("createActor", payload);

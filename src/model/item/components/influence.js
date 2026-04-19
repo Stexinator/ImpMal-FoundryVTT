@@ -11,7 +11,7 @@ export class ItemInfluenceModel extends foundry.abstract.DataModel
 
     createFaction(name) 
     {
-        let factions = duplicate(this.factions);
+        let factions = foundry.utils.duplicate(this.factions);
 
         // Only add if doesn't exist
         if (!factions[name.slugify()])

@@ -85,7 +85,7 @@ export class CharacteristicsStage extends ChargenStage {
       this.context.characteristics[ch].allocated = 0;
     }
 
-    this.context.rolledCharacteristics = duplicate(this.context.characteristics) // Used to restore roll if user goes back a step
+    this.context.rolledCharacteristics = foundry.utils.duplicate(this.context.characteristics) // Used to restore roll if user goes back a step
 
     this.calculateTotals();
 
@@ -163,8 +163,8 @@ export class CharacteristicsStage extends ChargenStage {
     if (this.context.step < Step.SWAPPING)
       this.context.step = Step.SWAPPING;
 
-    let ch1Roll = duplicate(this.context.characteristics[ch1].roll);
-    let ch2Roll = duplicate(this.context.characteristics[ch2].roll);
+    let ch1Roll = foundry.utils.duplicate(this.context.characteristics[ch1].roll);
+    let ch2Roll = foundry.utils.duplicate(this.context.characteristics[ch2].roll);
 
     this.context.characteristics[ch1].roll = ch2Roll;
     this.context.characteristics[ch2].roll = ch1Roll;
@@ -240,7 +240,7 @@ export class CharacteristicsStage extends ChargenStage {
     this.context.step = Step.REROLL
     else 
       this.context.step = Step.FIRST_ROLL
-    this.context.characteristics = duplicate(this.context.rolledCharacteristics)
+    this.context.characteristics = foundry.utils.duplicate(this.context.rolledCharacteristics)
     this.render(true)
   }
 

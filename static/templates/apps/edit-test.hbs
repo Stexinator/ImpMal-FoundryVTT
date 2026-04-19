@@ -25,11 +25,7 @@
             <label>{{localize "IMPMAL.State"}}</label>
             <div class="form-fields">
                 <select name="state">
-                    {{#select result.state}}
-                        <option value="none">{{localize "IMPMAL.None"}}</option>
-                        <option value="adv">{{localize "IMPMAL.Advantage"}}</option>
-                        <option value="dis">{{localize "IMPMAL.Disadvantage"}}</option>
-                    {{/select}}
+                    {{selectOptions states selected=result.state localize=true}}
                 </select>
             </div>
         </div>

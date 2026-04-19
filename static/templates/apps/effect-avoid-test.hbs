@@ -20,12 +20,7 @@
     <label>{{localize "IMPMAL.Difficulty"}}</label>
     <div class="form-fields">
         <select name="system.transferData.avoidTest.difficulty">
-        {{#select system.transferData.avoidTest.difficulty}}
-            <option value=""></option>
-            {{#each (config "difficulties")}}
-                <option value="{{@key}}">{{this.name}} ({{numberFormat this.modifier sign=true}})</option>
-            {{/each}}
-        {{/select}}
+            {{selectOptions (config "difficultyChoices") selected=system.transferData.avoidTest.difficulty blank=""}}
         </select>
     </div>
 </div>

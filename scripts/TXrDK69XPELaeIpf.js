@@ -11,7 +11,7 @@ foundry.utils.mergeObject(multimelta, {name : "Multi-melta", system : {
             list : [{key : "heavy", value : '4'}, {key : "rend", value : '10'}, {key : "twohanded", value : undefined}]
         }
     },
-    id : randomID()
+    id : foundry.utils.randomID()
 })
 
 foundry.utils.mergeObject(plasmaCannon, {name : "Plasma Cannon", system : {
@@ -30,7 +30,7 @@ foundry.utils.mergeObject(plasmaCannon, {name : "Plasma Cannon", system : {
             ]
         }
     },
-    id : randomID()
+    id : foundry.utils.randomID()
 })
 
 let choice = await ItemDialog.create([heavyBolter, plasmaCannon, multimelta], 1, "Choose Weapon");

@@ -33,7 +33,7 @@ export class ImpMalZoneTraitsModel extends foundry.abstract.DataModel {
         let schema = {};
         schema.barrier = new fields.BooleanField({label : "IMPMAL.Barrier"});
         schema.cover = new fields.StringField({label : "IMPMAL.Cover", choices : game.impmal.config.coverTypes});
-        schema.hazard = new fields.StringField({label : "IMPMAL.Hazard", choices : game.impmal.config.hazardtypes});
+        schema.hazard = new fields.StringField({label : "IMPMAL.Hazard", choices : game.impmal.config.hazardTypes});
         schema.difficult = new fields.BooleanField({label : "IMPMAL.DifficultTerrain"});
         schema.obscured = new fields.StringField({label : "IMPMAL.Obscured", choices : game.impmal.config.obscuredTypes});
         schema.light = new fields.StringField({label : "IMPMAL.Light", choices : game.impmal.config.lightTypes});

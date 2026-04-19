@@ -32,6 +32,13 @@ export default class EditTestForm extends WHFormApplication {
     {
         let context = await super._prepareContext();
         context.result = this.test.data.result;
+
+        context.states = {
+            none : "IMPMAL.None",
+            adv : "IMPMAL.Advantage",
+            dis : "IMPMAL.Disadvantage"
+        }
+
         return context;
     }
 

@@ -178,7 +178,7 @@ export class BaseTest extends WarhammerTestBase
         if (!this.message || newMessage)
         {
 
-            let id = randomID();
+            let id = foundry.utils.randomID();
             chatData._id = id;
             chatData.system.context.messageId = id;
             this.context.messageId = id;

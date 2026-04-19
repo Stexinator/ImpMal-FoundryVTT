@@ -97,6 +97,11 @@ export default class CharacterSheet extends IMActorSheet
         {
             context.dodgeValue = dodge.system.total;
         }
+
+        context.hands = {
+          right: "IMPMAL.Right",
+          left: "IMPMAL.Left"
+        }
         return context
       }
 

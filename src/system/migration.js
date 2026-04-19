@@ -440,7 +440,7 @@ export default class Migration {
 
     static async _migrateReference(document, field, migration)
     {
-        let property = getProperty(document.system, field);
+        let property = foundry.utils.getProperty(document.system, field);
         if (!property || property.uuid)
         {
             return;

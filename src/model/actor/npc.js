@@ -77,8 +77,7 @@ export class NPCModel extends StandardActorModel
                 }
             }
 
-            let physicalTypes = Object.keys(game.template.Item).filter(i => game.template.Item[i].templates?.includes("physical"));
-            let possessions = this.parent.items.filter(i => physicalTypes.includes(i.type));
+            let possessions = this.parent.items.filter(i => i.system.isPhysical);
 
             let traits = this.parent.itemTypes.trait.filter(i => i.system.notes.player).map(i => {
                 return i.system.notes.player.replace("<p>", `<p><strong>${i.name}</strong>: `)

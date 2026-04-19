@@ -27,14 +27,8 @@
                     <div class="label" style="grid-column: 1 / span 4"><label class="centered">{{localize "IMPMAL.Avail."}}</label></div>
                     <div class="field" style="grid-column: 5 / span 8">
                         <select name="system.availability">
-                        {{#select system.availability}}
-                            <option value=""></option>
-                            {{#each (config "availability")}}
-                                <option value="{{@key}}">{{this}}</option>
-                            {{/each}}
-                            <option value="other">{{localize "IMPMAL.Other"}}</option>
-                        {{/select}}
-                    </select>
+                            {{selectOptions availabilities selected=system.availability blank=""}}
+                        </select>
                     </div>
                 </div>
             </div>

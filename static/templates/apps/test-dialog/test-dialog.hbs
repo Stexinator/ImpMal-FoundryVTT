@@ -21,12 +21,7 @@
     <label>{{localize "IMPMAL.Difficulty"}}</label>
     <div class="form-fields">
         <select name="difficulty">
-            {{#select fields.difficulty}}
-                {{#each (config "difficulties")}}
-                    <option value="{{@key}}">{{this.name}} ({{numberFormat this.modifier sign=true}})
-                    </option>
-                {{/each}}
-            {{/select}}
+            {{selectOptions (config "difficultyChoices") selected=fields.difficulty}}
         </select>
     </div>
 </div>

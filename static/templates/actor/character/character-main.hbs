@@ -82,19 +82,13 @@
                     class="centered">{{localize "IMPMAL.Handed"}}</label></div>
             <div class="field" style="grid-column: 1 / span 12">
                 <select name="system.handed">
-                    {{#select system.handed}}
-                        <option value="right">{{localize "IMPMAL.Right"}}</option>
-                        <option value="left">{{localize "IMPMAL.Left"}}</option>
-                    {{/select}}
+                    {{selectOptions hands selected=system.hands localize=true}}
                 </select>
             </div>
         </div>
     </div>
 
     <div class="attribute-row flexrow">
-
-
-
         <div class="attribute-box top-label">
             <div class="label" style="grid-column: 1 / span 12"><label
                     class="centered">{{#if (gt system.corruption.value system.corruption.max)}}<a

@@ -32,7 +32,7 @@ export class PhysicalItemModel extends StandardItemModel
 
     get inPack()
     {
-        return this.parent.actor?.itemTypes.pack.find(i => i.system.actorItems.list.find(item => item.uuid == this.parent.uuid))
+        return this.parent.actor?.itemTypes.pack.find(i => i.system.actorItems.list.find(item => item.id == this.parent.id))
     }
 
     computeBase() 

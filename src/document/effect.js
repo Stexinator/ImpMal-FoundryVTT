@@ -140,4 +140,59 @@ export class ImpMalEffect extends WarhammerActiveEffect
             return message ? message.system.test : new (game.impmal.testClasses[testData.class])(testData);
         }
     }
+
+    get changeKeys()
+    {
+        return {choices: Object.keys(game.impmal.config.characteristics).map(i => {
+            return {
+                value: `system.characteristics.${i}.modifier`,
+                label: game.impmal.config.characteristics[i],
+                group: game.i18n.localize("IMPMAL.Characteristics")
+            }
+        }).concat(Object.keys(game.impmal.config.skills).map(i => {
+            return {
+                value: `system.skills.${i}.modifier`,
+                label: game.impmal.config.skills[i],
+                group: game.i18n.localize("IMPMAL.Skills")
+            }
+        }))
+        .concat([{value: "system.influence.factions.*.modifier", label: game.i18n.localize("IMPMAL.ChooseFaction"), group: game.i18n.localize("IMPMAL.Influence")}])
+        .concat(Object.keys(game.impmal.config.factions).map(faction => {
+            return {
+                value: `system.influence.factions.${faction}.modifier`, 
+                label: game.impmal.config.factions[faction], 
+                group: game.i18n.localize("IMPMAL.Influence")
+            }
+        }))
+        .concat([
+            {value: "system.combat.wounds.max", label: game.i18n.localize("IMPMAL.MaxWounds"), group: "Other"},
+            {value: "system.combat.criticals.max", label: game.i18n.localize("IMPMAL.MaxCriticalWounds"), group: "Other"},
+            {value: "system.combat.initiative", label: game.i18n.localize("IMPMAL.Initiative"), group: "Other"},
+            {value: "system.warp.threshold", label: game.i18n.localize("IMPMAL.WarpChargeThreshold"), group: "Other"},
+            {value: "system.encumbrance.overburdened", label: game.i18n.localize("IMPMAL.OverburdenedThreshold"), group: "Other"},
+            {value: "system.encumbrance.restrained", label: game.i18n.localize("IMPMAL.RestrainedThreshold"), group: "Other"},
+            {value: "system.augmetics.max", label: game.i18n.localize("IMPMAL.MaxAugmetics"), group: "Other"},
+            {value: "system.combat.speed.land.modifier", label: game.i18n.localize("IMPMAL.SpeedModifierLand"), group: "Other"},
+            {value: "system.combat.speed.fly.modifier", label: game.i18n.localize("IMPMAL.SpeedModifierFly"), group: "Other"},
+            {value: "system.combat.armourModifier", label: game.i18n.localize("IMPMAL.ArmourAll"), group: "Other"},
+            {value: "system.combat.hitLocations.head.armour", label: game.i18n.localize("IMPMAL.ArmourHead"), group: "Other"},
+            {value: "system.combat.hitLocations.body.armour", label: game.i18n.localize("IMPMAL.ArmourBody"), group: "Other"},
+            {value: "system.combat.hitLocations.leftArm.armour", label: game.i18n.localize("IMPMAL.ArmourLeftArm"), group: "Other"},
+            {value: "system.combat.hitLocations.rightArm.armour", label: game.i18n.localize("IMPMAL.ArmourRightArm"), group: "Other"},
+            {value: "system.combat.hitLocations.leftLeg.armour", label: game.i18n.localize("IMPMAL.ArmourLeftLeg"), group: "Other"},
+            {value: "system.combat.hitLocations.rightLeg.armour", label: game.i18n.localize("IMPMAL.ArmourRightLeg"), group: "Other"}
+        ]).concat([
+            {value: "system.payment.gradeModifier", label: game.i18n.localize("IMPMAL.PayGradeModifier"), group: "Patron"},
+            {value: "system.rangeModifier.value", label: game.i18n.localize("IMPMAL.RangeModifier"), group: "Item"},
+            {value: "system.rangeModifier.override", label: game.i18n.localize("IMPMAL.RangeOverride"), group: "Item"}
+        ])
+        , 
+        groups: ['IMPMAL.Characteristics',
+        'IMPMAL.Skills',
+        "IMPMAL.Influence",
+        'Other',
+        'Patron',
+        'Item',
+        ].map(i => game.i18n.localize(i))};
+    }
 }

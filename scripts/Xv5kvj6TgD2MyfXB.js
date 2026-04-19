@@ -1,1 +1,1 @@
-return !args.fields.rapidFire
+return !args.fields.fireMode?.includes("rapid");

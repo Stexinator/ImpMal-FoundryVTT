@@ -117,16 +117,7 @@ export class StandardActorModel extends BaseActorModel
 
     computeEncumbranceThresholds(items) 
     {
-        let list = [];
-        let physicalTypes = Object.keys(game.template.Item).filter(i => game.template.Item[i].templates?.includes("physical"));
-        
-        for (let type in items)
-        {
-            if (physicalTypes.includes(type))
-            {
-                list = list.concat(items[type]);
-            }
-        }
+        let list = this.parent.items.filter(i => i.system.isPhysical);
 
         this.encumbrance.overburdened += this.characteristics.str.bonus + this.characteristics.tgh.bonus; 
         this.encumbrance.restrained += (this.characteristics.str.bonus + this.characteristics.tgh.bonus) * 2;

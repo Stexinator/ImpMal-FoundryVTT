@@ -127,6 +127,14 @@ export class TestDialog extends WarhammerRollDialogV2
         let context = await super._prepareContext(options);
         this.fields.state = this.computeState();
         context.showSuperiority = this.actor?.inCombat && this.actor?.hasPlayerOwner;
+        context.difficulties = foundry.utils.deepClone(game.impmal.config.difficulties);
+
+        for(let d in context.difficulties)
+        {
+            let name = context.difficulties[d].name;
+            let modifier = context.difficulties[d].modifier;
+            context.difficulties[d] = `${name} (${modifier >= 0 ? "+" : "-"}${modifier})`;
+        }
         return context
     }
 

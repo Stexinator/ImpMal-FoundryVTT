@@ -147,6 +147,9 @@ export default class IMItemSheet extends SheetMixin(WarhammerItemSheetV2)
         let data = await super._prepareContext(options);
         data.conditions = this.formatConditions(data);
         data.collapsed = this.collapsed;
+
+        data.availabilities = foundry.utils.deepClone(game.impmal.config.availability);
+        data.availabilities.other = game.i18n.localize("IMPMAL.Other");
         return data;
     }
 

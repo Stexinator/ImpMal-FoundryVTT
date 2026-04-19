@@ -56,8 +56,11 @@ export class FactionStage extends ChargenStage {
     async getData() {
         let data = await super.getData()
         if (this.context.faction)
+        {
             data.factionDescription = await foundry.applications.ux.TextEditor.implementation.enrichHTML(this.context.faction.system.character.notes, {async : true})
-
+            data.characteristics = this.context.faction.system.character.characteristics.choices.reduce((obj, ch) => {obj[ch] = game.impmal.config.characteristics[ch]; return obj}, {})
+        }
+        
         
         if (this.context.equipment.length)
         {
