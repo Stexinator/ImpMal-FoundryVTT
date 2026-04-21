@@ -68,7 +68,7 @@ function _addImpmalStatusEffects(html, actor) {
     let effects = html.querySelector(".status-effects");
     let sheetConditions = actor.sheet.formatConditions({ actor: actor });
 
-    let newEffects = "<div class='status-effects impmal'>";
+    let newEffects = "";
 
     for (let c of sheetConditions) {
         let pipHTML = "";
@@ -89,8 +89,7 @@ function _addImpmalStatusEffects(html, actor) {
         `;
     }
 
-    newEffects += "</div>";
-
+    effects.classList.add("impmal");
     effects.innerHTML = newEffects;
 
 
