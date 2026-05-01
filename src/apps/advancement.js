@@ -107,7 +107,7 @@ export class AdvancementForm extends HandlebarsApplicationMixin(ApplicationV2)
         if (target.dataset.type == "other")
         {
             let newOther = { [`${target.name}`]: (Number.isNumeric(target.value) ? Number(target.value) : (target.value || 0)) };
-            this.actorCopy.updateSource({ "system.xp": this.actorCopy.system.xp.other.add(newOther) });
+            this.actorCopy.updateSource(this.actorCopy.system.xp.other.add(newOther));
         }
 
         this.render({force : true})
@@ -132,12 +132,12 @@ export class AdvancementForm extends HandlebarsApplicationMixin(ApplicationV2)
                 newList = this.actorCopy.system.xp.other.edit(index, other);
             }
 
-            this.actorCopy.updateSource({ "system.xp": newList });
+            this.actorCopy.updateSource(newList);
         }
         else if (target.dataset.type == "log")
         {
             let newList = this.actorCopy.system.xp.log.edit(index, { reason: target.value });
-            this.actorCopy.updateSource({ "system.xp": newList });
+            this.actorCopy.updateSource(newList);
             this.render(true);
         }
         this.render({force : true})
@@ -145,7 +145,7 @@ export class AdvancementForm extends HandlebarsApplicationMixin(ApplicationV2)
     }
     static async _onRemoveType(ev, target) 
     {
-        let index = ev.target.parentElement.dataset.index;
+        let index = ev.target.parentElement.closest("[data-index]").dataset.index;
         let entry = this.actorCopy.system.xp.log.list[index];
         let revert = await foundry.applications.api.DialogV2.confirm({ content: `Revert ${entry.xp} XP?` })
         let newList = this.actorCopy.system.xp.log.remove(index);
@@ -153,7 +153,7 @@ export class AdvancementForm extends HandlebarsApplicationMixin(ApplicationV2)
         if (revert) {
             this.actorCopy.updateSource({ "system.xp.total": this.actorCopy.system.xp.total - entry.xp });
         }
-        this.actorCopy.updateSource({ "system.xp": newList });
+        this.actorCopy.updateSource(newList);
 
         this.render({force : true})
     }

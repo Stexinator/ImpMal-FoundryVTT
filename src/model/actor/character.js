@@ -88,7 +88,7 @@ export class CharacterModel extends StandardActorModel
         if (options.changed.system?.xp?.total && !options.skipXPReason)
         {
             let reason = await ValueDialog.create({title : "XP Change", text : "Reason for XP Change?"});
-            foundry.utils.mergeObject(data.system.xp, this.xp.log.add({xp : options.changed.system?.xp?.total - this.xp.total, reason : reason || "Unspecified Reason", total : options.changed.system?.xp?.total}));
+            foundry.utils.mergeObject(data, this.xp.log.add({xp : options.changed.system?.xp?.total - this.xp.total, reason : reason || "Unspecified Reason", total : options.changed.system?.xp?.total}));
         }
     }
 
@@ -153,7 +153,7 @@ export class CharacterModel extends StandardActorModel
         if (xp)
         {
             // Add to log
-            update.system.xp = this.xp.log.add({reason : reason || "Unspecified Reason", xp, total : this.xp.total + xp});
+            foundry.utils.mergeObject(update, this.xp.log.add({reason : reason || "Unspecified Reason", xp, total : this.xp.total + xp}));
 
             // Add to actual numerical total
             update.system.xp.total = this.xp.total + xp;

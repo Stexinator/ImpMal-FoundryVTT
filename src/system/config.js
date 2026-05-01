@@ -783,7 +783,7 @@ const IMPMAL = {
                             },
                             {
                                 label : "Remove",
-                                script: "if (args.combatant.actor.uuid == this.effect.origin) this.effect.delete();", // Delete at the start of the defender's turn
+                                script: "if (args.combat.combatant.actor.uuid === this.effect.sourceActor.uuid) this.effect.delete();", // Delete at the start of the defender's turn
                                 trigger: "updateCombat",
                             }
                         ]
